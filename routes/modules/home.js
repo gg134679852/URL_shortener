@@ -17,13 +17,11 @@ router.post('/post', async (req, res) => {
     .then(origin =>{
       urlId(origin.id,origin.url)
       shortId.create(obj)
+      db.close()
       })
     .then(()=>{
       res.render('url', obj[0])
     })
-  .then(()=>{
-    return db.close()
-  })
 })
 router.get('/:id', (req, res) => {
   const id = req.params.id
