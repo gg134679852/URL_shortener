@@ -17,7 +17,9 @@ router.post('/post', async (req, res) => {
     .then(origin =>{
       urlId(origin.id,origin.url)
       shortId.create(obj)
-      db.close()
+      })
+      .then(()=>{
+        db.close()
       })
     .then(()=>{
       res.render('url', obj[0])
