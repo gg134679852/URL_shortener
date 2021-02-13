@@ -11,15 +11,13 @@ res.render('index')
 
 router.post('/post', async (req, res) => {
   // await origin_URL.deleteMany({})
-  return origin_URL.create({
+  origin_URL.create({
     url: req.body.url,
   })
     .then(origin =>{
       urlId(origin.id,origin.url)
       shortId.create(obj)
-      })
-      .then(()=>{
-        db.close()
+      db.close()
       })
     .then(()=>{
       res.render('url', obj[0])
