@@ -1,4 +1,4 @@
-# 最愛餐廳清單 (favorite_restaurant)
+# 短網址產生器 (URL_shortener)
 
 ## 環境建置與需求 (prerequisites)
 - Node.js 10.15.0
@@ -10,11 +10,11 @@
 ## 安裝與執行 (installation and execution)
 1. 選定一個資料夾，用來存放本專案。開啟終端機，移動至該資料夾，下載本專案
 ```
-git clone https://github.com/gg134679852/favorite_restaurant
+git clone https://github.com/gg134679852/URL_shortener
 ```
 1. 移動至本專案資料夾
 ```
-cd favorite_restaurant
+cd URL_shortener
 ```
 2. 安裝套件
 ```
@@ -35,7 +35,4 @@ http://localhost:3000/
 ```
 
 ## 功能 (features)
-- 瀏覽餐廳列表
-- 於餐廳列表中點擊任一間餐廳，即可瀏覽該餐廳之詳細資訊
-- 使用餐廳名稱，搜尋列表中之餐廳
-- 增加編輯.新增.刪除功能
+- 縮短網址
