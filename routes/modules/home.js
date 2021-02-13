@@ -1,3 +1,4 @@
+const db = require('../../config/mongoose')
 const express = require('express')
 const router = express.Router()
 const origin_URL = require('../../models/origin_URL')
@@ -20,6 +21,9 @@ router.post('/post', async (req, res) => {
       res.render('url', obj[0])
     })
   origin_URL.deleteMany({})
+  .then(()=>{
+    return db.close()
+  })
 })
 router.get('/:id', (req, res) => {
   const id = req.params.id
