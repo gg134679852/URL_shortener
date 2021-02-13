@@ -10,7 +10,7 @@ res.render('index')
 })
 
 router.post('/post', async (req, res) => {
-  await origin_URL.deleteMany({})
+  // await origin_URL.deleteMany({})
   origin_URL.create({
     url: req.body.url,
   })
