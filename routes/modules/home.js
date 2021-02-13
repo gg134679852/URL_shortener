@@ -11,7 +11,7 @@ res.render('index')
 
 router.post('/post', async (req, res) => {
   // await origin_URL.deleteMany({})
-  origin_URL.create({
+  return origin_URL.create({
     url: req.body.url,
   })
     .then(origin =>{
@@ -24,12 +24,13 @@ router.post('/post', async (req, res) => {
     .then(()=>{
       res.render('url', obj[0])
     })
+    .catch (error => { console.log('caught', error.message); })
 })
 router.get('/:id', (req, res) => {
   const id = req.params.id
   shortId.find({ shortId: { $regex: id} })
     .lean()
     .then((origin) => res.redirect(origin[0].originUrl))
-    .catch(()=>res.sendStatus(404))
+    .catch(()=>{console.log('erro')})
 })
 module.exports = router
