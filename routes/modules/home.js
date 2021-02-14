@@ -12,14 +12,16 @@ router.post('/post',(req, res) => {
   shortener.create(obj)
     .then(()=>{
       res.render('url', obj[0])
+      console.log(obj)
+      obj.splice(0, 1)
     })
     .catch (error => { console.log('caught', error.message); })
  })
-router.get('/:id', (req, res) => {
-  const id = req.params.id
-  shortener.find({ shortId: { $regex: id} })
-    .lean()
-    .then((origin) => res.redirect(origin[0].originUrl))
-    .catch(()=>{console.log('erro')})
-})
+// router.get('/:id', (req, res) => {
+//   const id = req.params.id
+//   shortener.find({ shortId: { $regex: id} })
+//     .lean()
+//     .then((origin) => res.redirect(origin[0].originUrl))
+//     .catch(()=>{console.log('erro')})
+// })
 module.exports = router
