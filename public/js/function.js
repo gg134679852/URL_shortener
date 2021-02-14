@@ -1,14 +1,28 @@
-let originId = ''
-let obj = []
+const shortid = require('shortid')
+const obj = []
+
 module.exports = {
-  urlId: (id,url) => {
-    if(obj.length > 0){
-      obj.splice(0,1)
+  urlId: (url) => {
+    let originId = ''
+    let splitId = ''
+    let id = ''
+    
+    for(i=0;i<=1;i++){
+
+      originId+=shortid.generate()
+      splitId = originId.split('')
+
+      if (splitId.includes('_') || splitId.includes('-')){
+        splitId = ''
+        continue
+      }else{
+        id = splitId.join('')
+      }
     }
-    originId = id.split('')
+
     obj.push({
-      shortId: originId.slice(19).join(''),
-               originUrl: url
+      originUrl: url ,
+      shortId: id.slice(0,5)
     })
   },
   obj
