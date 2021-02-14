@@ -19,9 +19,10 @@ router.post('/post',(req, res) => {
  })
 router.get('/:id', (req, res) => {
   const id = req.params.id
-  shortener.find({ shortId: { $regex: id} })
+  shortener.find({ shortId: id  })
     .lean()
-    .then((origin) => res.redirect(origin[0].originUrl))
-    .catch(()=>{console.log('erro')})
+    .then((origin) =>{
+    res.redirect(origin[0].originUrl)})
+  .catch(() => { res.sendStatus(404) })
 })
 module.exports = router
